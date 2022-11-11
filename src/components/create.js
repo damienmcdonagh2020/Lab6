@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 export class Create extends React.Component {
 
@@ -8,6 +9,8 @@ export class Create extends React.Component {
         this.onChangeBookTitle = this.onChangeBookTitle.bind(this);
         this.onChangeBookCover = this.onChangeBookCover.bind(this);
         this.onChangeBookAuthor = this.onChangeBookAuthor.bind(this);
+        
+
         this.state = {
             title:'',
             cover:'',
@@ -20,6 +23,19 @@ export class Create extends React.Component {
         ${this.state.title},
         ${this.state.cover},
         ${this.state.author}`);
+
+        //post to the server
+        const book={
+            title:this.state.title,
+            cover:this.state.cover,
+            author:this.state.author
+        }
+
+        //book to be send up tp the server
+        axios.post ('http://localhost:4000/api/books',book)
+        .then()
+        .catch();
+
         this.setState({
             title:'',
             cover:'',
